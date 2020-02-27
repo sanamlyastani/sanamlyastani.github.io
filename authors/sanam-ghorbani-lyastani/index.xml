@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sanam Ghorbani Lyastani | Academic</title>
+    <link>/authors/sanam-ghorbani-lyastani/</link>
+      <atom:link href="/authors/sanam-ghorbani-lyastani/index.xml" rel="self" type="application/rss+xml" />
+    <description>Sanam Ghorbani Lyastani</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 23 Jan 2020 14:51:11 +0100</lastBuildDate>
+    <image>
+      <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
+      <title>Sanam Ghorbani Lyastani</title>
+      <link>/authors/sanam-ghorbani-lyastani/</link>
+    </image>
+    
+    <item>
+      <title>Is FIDO2 the Kingslayer of User Authentication? A Comparative Usability Study of FIDO2 Passwordless Authentication</title>
+      <link>/publication/oakland20/</link>
+      <pubDate>Thu, 23 Jan 2020 14:51:11 +0100</pubDate>
+      <guid>/publication/oakland20/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Better managed than memorized? Studying the Impact of Managers on Password Strength and Reuse</title>
+      <link>/publication/usenix18/</link>
+      <pubDate>Fri, 23 Feb 2018 14:19:14 +0100</pubDate>
+      <guid>/publication/usenix18/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Improving Password Memorability and Strength Using Mangling Rules</title>
+      <link>/publication/usenixposter/</link>
+      <pubDate>Tue, 23 Feb 2016 14:59:21 +0100</pubDate>
+      <guid>/publication/usenixposter/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authors | Academic</title>
+    <link>/authors/</link>
+      <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
+    <description>Authors</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 23 Jan 2020 14:51:11 +0100</lastBuildDate>
+    <image>
+      <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
+      <title>Authors</title>
+      <link>/authors/</link>
+    </image>
+    
+    <item>
+      <title>Michael Backes</title>
+      <link>/authors/michael-backes/</link>
+      <pubDate>Thu, 23 Jan 2020 14:51:11 +0100</pubDate>
+      <guid>/authors/michael-backes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Michael Schilling</title>
+      <link>/authors/michael-schilling/</link>
+      <pubDate>Thu, 23 Jan 2020 14:51:11 +0100</pubDate>
+      <guid>/authors/michael-schilling/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Michaela Neumayr</title>
+      <link>/authors/michaela-neumayr/</link>
+      <pubDate>Thu, 23 Jan 2020 14:51:11 +0100</pubDate>
+      <guid>/authors/michaela-neumayr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sanam Ghorbani Lyastani</title>
+      <link>/authors/sanam-ghorbani-lyastani/</link>
+      <pubDate>Thu, 23 Jan 2020 14:51:11 +0100</pubDate>
+      <guid>/authors/sanam-ghorbani-lyastani/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sven Bugiel</title>
+      <link>/authors/sven-bugiel/</link>
+      <pubDate>Thu, 23 Jan 2020 14:51:11 +0100</pubDate>
+      <guid>/authors/sven-bugiel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sascha Fahl</title>
+      <link>/authors/sascha-fahl/</link>
+      <pubDate>Fri, 23 Feb 2018 14:19:14 +0100</pubDate>
+      <guid>/authors/sascha-fahl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Yasemin Acar</title>
+      <link>/authors/yasemin-acar/</link>
+      <pubDate>Tue, 23 Feb 2016 14:59:21 +0100</pubDate>
+      <guid>/authors/yasemin-acar/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/authors/admin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/authors/admin/</guid>
+      <description>&lt;p&gt;I am a Ph.D. candidate at CISPA Helmholtz Center for Information Security, Saarland University. My research focus is on usable security for user authentication. My main research interest centers on passwords, multi-factors and passwordless authentication with FIDO2/WebAuthn. The results of my works have been published at top tier conferences like USENIX Security and IEEE S&amp;amp;P.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

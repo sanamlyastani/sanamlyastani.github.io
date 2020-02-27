@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Michaela Neumayr | Academic</title>
+    <link>/authors/michaela-neumayr/</link>
+      <atom:link href="/authors/michaela-neumayr/index.xml" rel="self" type="application/rss+xml" />
+    <description>Michaela Neumayr</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 23 Jan 2020 14:51:11 +0100</lastBuildDate>
+    <image>
+      <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
+      <title>Michaela Neumayr</title>
+      <link>/authors/michaela-neumayr/</link>
+    </image>
+    
+    <item>
+      <title>Is FIDO2 the Kingslayer of User Authentication? A Comparative Usability Study of FIDO2 Passwordless Authentication</title>
+      <link>/publication/oakland20/</link>
+      <pubDate>Thu, 23 Jan 2020 14:51:11 +0100</pubDate>
+      <guid>/publication/oakland20/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
