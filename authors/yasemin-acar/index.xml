@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Yasemin Acar | Academic</title>
-    <link>/authors/yasemin-acar/</link>
-      <atom:link href="/authors/yasemin-acar/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://sanamlyastani.github.io/authors/yasemin-acar/</link>
+      <atom:link href="https://sanamlyastani.github.io/authors/yasemin-acar/index.xml" rel="self" type="application/rss+xml" />
     <description>Yasemin Acar</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 23 Feb 2016 14:59:21 +0100</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>Yasemin Acar</title>
-      <link>/authors/yasemin-acar/</link>
+      <link>https://sanamlyastani.github.io/authors/yasemin-acar/</link>
     </image>
     
     <item>
       <title>Improving Password Memorability and Strength Using Mangling Rules</title>
-      <link>/publication/usenixposter/</link>
+      <link>https://sanamlyastani.github.io/publication/usenixposter/</link>
       <pubDate>Tue, 23 Feb 2016 14:59:21 +0100</pubDate>
-      <guid>/publication/usenixposter/</guid>
+      <guid>https://sanamlyastani.github.io/publication/usenixposter/</guid>
       <description></description>
     </item>
     

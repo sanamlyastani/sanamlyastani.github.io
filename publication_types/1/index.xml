@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>1 | Academic</title>
-    <link>/publication_types/1/</link>
-      <atom:link href="/publication_types/1/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://sanamlyastani.github.io/publication_types/1/</link>
+      <atom:link href="https://sanamlyastani.github.io/publication_types/1/index.xml" rel="self" type="application/rss+xml" />
     <description>1</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 23 Feb 2018 14:19:14 +0100</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>1</title>
-      <link>/publication_types/1/</link>
+      <link>https://sanamlyastani.github.io/publication_types/1/</link>
     </image>
     
     <item>
       <title>Better managed than memorized? Studying the Impact of Managers on Password Strength and Reuse</title>
-      <link>/publication/usenix18/</link>
+      <link>https://sanamlyastani.github.io/publication/usenix18/</link>
       <pubDate>Fri, 23 Feb 2018 14:19:14 +0100</pubDate>
-      <guid>/publication/usenix18/</guid>
+      <guid>https://sanamlyastani.github.io/publication/usenix18/</guid>
       <description></description>
     </item>
     

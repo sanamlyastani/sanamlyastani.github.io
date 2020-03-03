@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Sascha Fahl | Academic</title>
-    <link>/authors/sascha-fahl/</link>
-      <atom:link href="/authors/sascha-fahl/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://sanamlyastani.github.io/authors/sascha-fahl/</link>
+      <atom:link href="https://sanamlyastani.github.io/authors/sascha-fahl/index.xml" rel="self" type="application/rss+xml" />
     <description>Sascha Fahl</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 23 Feb 2018 14:19:14 +0100</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>Sascha Fahl</title>
-      <link>/authors/sascha-fahl/</link>
+      <link>https://sanamlyastani.github.io/authors/sascha-fahl/</link>
     </image>
     
     <item>
       <title>Better managed than memorized? Studying the Impact of Managers on Password Strength and Reuse</title>
-      <link>/publication/usenix18/</link>
+      <link>https://sanamlyastani.github.io/publication/usenix18/</link>
       <pubDate>Fri, 23 Feb 2018 14:19:14 +0100</pubDate>
-      <guid>/publication/usenix18/</guid>
+      <guid>https://sanamlyastani.github.io/publication/usenix18/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Improving Password Memorability and Strength Using Mangling Rules</title>
-      <link>/publication/usenixposter/</link>
+      <link>https://sanamlyastani.github.io/publication/usenixposter/</link>
       <pubDate>Tue, 23 Feb 2016 14:59:21 +0100</pubDate>
-      <guid>/publication/usenixposter/</guid>
+      <guid>https://sanamlyastani.github.io/publication/usenixposter/</guid>
       <description></description>
     </item>
     
