@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>UX research | Sanam Lyastani</title>
+    <link>https://sanamlyastani.github.io/tag/ux-research/</link>
+      <atom:link href="https://sanamlyastani.github.io/tag/ux-research/index.xml" rel="self" type="application/rss+xml" />
+    <description>UX research</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language>
+    <image>
+      <url>https://sanamlyastani.github.io/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
+      <title>UX research</title>
+      <link>https://sanamlyastani.github.io/tag/ux-research/</link>
+    </image>
+    
+    <item>
+      <title>Better managed than memorized?</title>
+      <link>https://sanamlyastani.github.io/project/example/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://sanamlyastani.github.io/project/example/</guid>
+      <description>&lt;p&gt;Despite their well-known security problems, passwords are still the incumbent authentication method for virtually all online services. To remedy the situation, users are very often referred to password managers as a solution to the password reuse and weakness problems. However, to date, the actual impact of password managers on password strength and reuse has not been studied systematically. In our USENIX Security’18 work, we provided the first large-scale study of password managers’ influence on users’ real-life passwords. By combining qualitative data on users’ password creation and management strategies, collected from 476 participants of an online survey, with quantitative data (incl. password metrics and entry methods) collected in situ with a browser plugin from 170 users, we were able to gain a more complete picture of the factors that influence our participants’ password strength and reuse. Our approach allowed us to quantify for the first time that password managers indeed influence password security. However, whether this influence is beneficial or aggravates existing problems depends on the users’ strategies and how well the manager supports the users’ password management right from the time of password creation. Given our results, we think research should further investigate how managers can better support users’ password strategies in order to improve password security as well as stop aggravating the existing problems.&lt;/p&gt;
+&lt;p&gt;Methodology:&lt;/p&gt;
+&lt;p&gt;For our study of password managers’ impact on password strength and reuse, we use data collected from paid work- ers of Amazon’s crowd-sourcing service Mechanical Turk. We collected the data in two different stages: 1) a survey sampling, and 2) collection of in situ password metrics.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Is FIDO2 the Kingslayer of User Authentication?</title>
+      <link>https://sanamlyastani.github.io/project/passwordless/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://sanamlyastani.github.io/project/passwordless/</guid>
+      <description>&lt;p&gt;Here I would like to explain one of my project about a comparative usability study of FDIO2 passwordless authentication. So, what is FIDO2? FIDO2 is a new authentication standard that was jointly developed by the FIDO Alliance, an open industry association that includes Google, Facebook, Microsoft, Amazon, VISA, plus more than 200 other organizations, and the World Wide Web Consortium, the main international standards organization for the web.&lt;/p&gt;
+&lt;p&gt;In a nutshell, FIDO2 consists of two protocols, WebAuthn and CTAP2, that together allow a relying party, like a web service, to make use of hardware authenticators, like security keys, for user authentication. FIDO2 supports two-factor and multi-factor authentication, but also single factor authentication in which the hardware authenticator is the only factor. This single factor, passwordless authentication has recently received a lot of attention. For instance, the media has declared FIDO2 passwordless authentication as the killer of password and the future king of user authentication on the web. So, we were wondering if FIDO2 is the kingslayer of web authentication?
+More concretely, we wanted to find answers to:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;whether end-users accept this paradigm shift from &amp;ldquo;something they know&amp;rdquo; to “something they have”,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;how they perceive the usability of this form of passwordless authentication,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;and which factors could inhibit an adoption by end-users?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;To answer these questions, we conducted the first large-scale comparative user study of FIDO2 passwordless authentication. We recruited 94 participants, which we randomly distributed between a password control group and passwordless authentication group. While the control group used regular text-based passwords for web authentication, the passwordless authentication group used a Yubico Security Key as the single factor for authentication.&lt;/p&gt;
+&lt;p&gt;The exact methodology of our lab study was as follows.&lt;/p&gt;
+&lt;p&gt;After we welcomed our participant and gave study instructions, the participant watched a short introduction video about password-based authentication in which we recapped well known benefits and drawbacks of text-based passwords.&lt;/p&gt;
+&lt;p&gt;For introducing passwordless authentication, we provide publicly available information from vendor sites like Yubico or from technology-related blogs and news about FIDO2. Such as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;No more passwords are needed and a security key can be reused instead for different accounts. - - The key costs 40 Euros, which corresponds to around 40 Dollars, the median price between low- and high-end security keys on the market.&lt;/li&gt;
+&lt;li&gt;No secret data, like a password, needs to be stored on the web service.&lt;/li&gt;
+&lt;li&gt;Compromising the client does not leak any secrets either.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The technical guide on how to use the security key showed in a screen recording how to register and login to our mock websites here examplified with our Schmoogle website. If you are interested in our videos, in the bottom left corner is a QR code with the Youtube URL where we posted our videos.&lt;/p&gt;
+&lt;p&gt;Lastly, like our control group, our passwordless authentication group also answered the survey in which we asked them  to reflect on their experience with passwordless authentication and tell us about the ideas, benefits or drawbacks they see, or concerns they have. As a result, our collected data allowed us to evaluate the usability and acceptance of FIDO2 passwordless authentication and to gather user concerns and feedback about the paradigm shift to passwordless authentication.&lt;/p&gt;
+&lt;p&gt;Now, let me summarize the results of our study.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
