@@ -2,6 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://sanamlyastani.github.io/tag/authentication/</loc>
+    <lastmod>2023-06-25T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>https://sanamlyastani.github.io/tag/fido2/</loc>
+    <lastmod>2023-06-25T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>https://sanamlyastani.github.io/project/passwordless/</loc>
+    <lastmod>2023-06-25T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>https://sanamlyastani.github.io/project/</loc>
+    <lastmod>2023-06-25T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>https://sanamlyastani.github.io/tags/</loc>
+    <lastmod>2023-06-25T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>https://sanamlyastani.github.io/tag/ux-research/</loc>
+    <lastmod>2023-06-25T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
     <loc>https://sanamlyastani.github.io/</loc>
     <lastmod>2023-06-21T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -30,18 +54,6 @@
     <lastmod>2020-01-23T14:51:11+01:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://sanamlyastani.github.io/post/</loc>
-    <lastmod>2019-09-05T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://sanamlyastani.github.io/post/writing-technical-content/</loc>
-    <lastmod>2019-07-12T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://sanamlyastani.github.io/post/jupyter/</loc>
-    <lastmod>2019-09-05T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
     <loc>https://sanamlyastani.github.io/slides/</loc>
     <lastmod>2019-02-05T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -64,31 +76,10 @@
     <loc>https://sanamlyastani.github.io/event/</loc>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://sanamlyastani.github.io/talk/</loc>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://sanamlyastani.github.io/post/getting-started/</loc>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://sanamlyastani.github.io/project/external-project/</loc>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://sanamlyastani.github.io/project/example/</loc>
-    <changefreq>weekly</changefreq>
-  </url><url>
     <loc>https://sanamlyastani.github.io/categories/</loc>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://sanamlyastani.github.io/project/passwordless/</loc>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://sanamlyastani.github.io/project/</loc>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://sanamlyastani.github.io/tags/</loc>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://sanamlyastani.github.io/tag/ux-research/</loc>
+    <loc>https://sanamlyastani.github.io/post/</loc>
     <changefreq>weekly</changefreq>
   </url>
 </urlset>

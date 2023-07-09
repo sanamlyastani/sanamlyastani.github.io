@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authentication | Sanam Lyastani</title>
+    <link>https://sanamlyastani.github.io/tag/authentication/</link>
+      <atom:link href="https://sanamlyastani.github.io/tag/authentication/index.xml" rel="self" type="application/rss+xml" />
+    <description>Authentication</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 25 Jun 2023 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://sanamlyastani.github.io/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
+      <title>Authentication</title>
+      <link>https://sanamlyastani.github.io/tag/authentication/</link>
+    </image>
+    
+    <item>
+      <title>Is FIDO2 the Kingslayer of User Authentication?</title>
+      <link>https://sanamlyastani.github.io/project/passwordless/</link>
+      <pubDate>Sun, 25 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>https://sanamlyastani.github.io/project/passwordless/</guid>
+      <description>&lt;div class=&#34;bs-callout bs-callout-success&#34;&gt;
+  &lt;div&gt;
+    &lt;h2 id=&#34;tldr&#34;&gt;TLDR;&lt;/h2&gt;
+&lt;p&gt;Do end-users accept the new passwordless authentication paradigm with FIDO2 and which factors could inhibit adoption by users?
+We conducted the &lt;span style=&#34;color:#5cb85c&#34;&gt;first large-scale comparative lab study of FIDO2 passwordless authentication&lt;/span&gt; with 94 participants.
+Our results show that passwordless authentication was perceived as &lt;span style=&#34;color:#5cb85c&#34;&gt;more usable and was more accepted&lt;/span&gt; than password-based authentication.
+Our work motivates future research.
+First, user support and guidance for &lt;span style=&#34;color:#5cb85c&#34;&gt;scalable account recovery&lt;/span&gt; is needed.
+Second, support for &lt;span style=&#34;color:#5cb85c&#34;&gt;authenticator revocation&lt;/span&gt; without prior recovery is needed.
+Third, users need to be made aware of (individual) corner cases to &lt;span style=&#34;color:#5cb85c&#34;&gt;adapt their authentication strategies&lt;/span&gt;.
+Fourth, FIDO2 offers a great opportunity to &lt;span style=&#34;color:#5cb85c&#34;&gt;tailor authenticator form and features&lt;/span&gt; for a personalized authentication.
+Fifth, UX designers should establish mental models about passwordless authentication by drawing from existing models about &lt;span style=&#34;color:#5cb85c&#34;&gt;physical keys&lt;/span&gt;.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h1 id=&#34;motivation&#34;&gt;Motivation&lt;/h1&gt;
+&lt;p&gt;Here I would like to explain one of my projects about a comparative usability study of FDIO2 passwordless authentication. So, what is FIDO2? &lt;a href=&#34;https://fidoalliance.org/fido2/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;FIDO2&lt;/a&gt; is a new authentication standard that was jointly developed by the &lt;a href=&#34;https://fidoalliance.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;FIDO Alliance&lt;/a&gt;, an open industry association that includes Google, Facebook, Microsoft, Amazon, VISA, plus more than 200 other organizations, and the &lt;a href=&#34;https://www.w3.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;World Wide Web Consortium&lt;/a&gt; (W3C), the main international standards organization for the web.&lt;/p&gt;
+&lt;p&gt;In a nutshell, FIDO2 consists of two protocols, &lt;a href=&#34;https://w3c.github.io/webauthn/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;WebAuthn&lt;/a&gt; and &lt;a href=&#34;https://fidoalliance.org/specs/fido-v2.0-ps-20190130/fido-client-to-authenticator-protocol-v2.0-ps-20190130.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CTAP2&lt;/a&gt;, that together allow a relying party&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;, like a web service, to make use of hardware authenticators, like security keys, for user authentication. FIDO2 supports two-factor and multi-factor authentication, but also single factor authentication in which the hardware authenticator is the only factor. This single factor, passwordless authentication has recently received a lot of attention. For instance, the media has declared FIDO2 passwordless authentication as the killer of password and the future king of user authentication on the web. So, we were wondering if FIDO2 is the kingslayer of web authentication?&lt;/p&gt;
+&lt;p&gt;More concretely, we wanted to find answers to the following research questions:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Are users accepting FIDO2 passwordless authentication?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;How do users perceive FIDO2 passwordless authentication in terms of usability?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;What thoughts and concerns arise in the users’ minds when using FIDO2 1FA?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;To answer these questions, we conducted the first large-scale comparative user study of FIDO2 passwordless authentication. We recruited 94 participants, which we randomly distributed between a password control group Group$_{\textrm{Pass}}$ (48 participants) and passwordless authentication group Group$_{\textrm{1FA}}$ (46 participants). While the control group used regular text-based passwords for web authentication, the passwordless authentication group used a Yubico Security Key as the single factor for authentication.&lt;/p&gt;
+&lt;h1 id=&#34;methodology&#34;&gt;Methodology&lt;/h1&gt;
+&lt;p&gt;The exact methodology of our lab study was as follows, and we explain the individual steps for each group below.&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-methodology-of-our-lab-study&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Methodology of our lab study&#34; srcset=&#34;
+               /project/passwordless/methodology_hufa0e1407fa67b97f6dc4ca940fcf2184_141029_8a5fda0c51ac16958cdf2bf144b0f1b7.webp 400w,
+               /project/passwordless/methodology_hufa0e1407fa67b97f6dc4ca940fcf2184_141029_0d1fb91be1707883f94aa91c3fdf8291.webp 760w,
+               /project/passwordless/methodology_hufa0e1407fa67b97f6dc4ca940fcf2184_141029_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;https://sanamlyastani.github.io/project/passwordless/methodology_hufa0e1407fa67b97f6dc4ca940fcf2184_141029_8a5fda0c51ac16958cdf2bf144b0f1b7.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;298&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      Methodology of our lab study
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;welcome-and-topic-introduction&#34;&gt;Welcome and Topic Introduction&lt;/h3&gt;
+&lt;p&gt;For both groups, after we welcomed our participant and gave study instructions, the participant watched a short introduction video about password-based authentication in which we recapped well known benefits and drawbacks of text-based passwords.&lt;/p&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/_UCLBLo-fQI&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Afterwards, each group went through a dedicated steps.&lt;/p&gt;
+&lt;h3 id=&#34;group_textrmpass&#34;&gt;Group$_{\textrm{Pass}}$&lt;/h3&gt;
+&lt;p&gt;After the introduction video, our control group (Group$_{\textrm{Pass}}$) proceeded directly to a &lt;strong&gt;hands-on task&lt;/strong&gt; where they had to register accounts on mock websites and login to those accounts by using regular text-based passwords for web authentication. Our mock websites Fakebook and Schmoogle were based on the Facebook and Google Mail sites to provide our participants with a familiar site and reduce the impact of confounding factors when learning to deal with a new website.&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-schmoogle-website&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Schmoogle&#34; srcset=&#34;
+               /project/passwordless/schmoogle_hu21ab56d4d747ab7effdff08c27853dc6_145339_962dc1a6ac72872380b8ef467d66571d.webp 400w,
+               /project/passwordless/schmoogle_hu21ab56d4d747ab7effdff08c27853dc6_145339_56c089c898550c5f0926d0a67f802eb8.webp 760w,
+               /project/passwordless/schmoogle_hu21ab56d4d747ab7effdff08c27853dc6_145339_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://sanamlyastani.github.io/project/passwordless/schmoogle_hu21ab56d4d747ab7effdff08c27853dc6_145339_962dc1a6ac72872380b8ef467d66571d.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;454&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      Schmoogle website
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Afterwards, we asked participants to reflect on this experience in a &lt;strong&gt;survey&lt;/strong&gt;. The usability and the acceptance of the authentication mechanisms as well as user-specific factors that may affect these variables were measured using standardized methods like &lt;em&gt;SUS score&lt;/em&gt; or &lt;em&gt;Affinity for Technology Interaction&lt;/em&gt;. In order to get a more complete picture of user perception, we also used free text questions to capture the ideas, benefits, drawbacks, and concerns that our participants see.&lt;/p&gt;
+&lt;h3 id=&#34;group_textrm1fa&#34;&gt;Group$_{\textrm{1FA}}$&lt;/h3&gt;
+&lt;p&gt;Our passwordless authentication group (Group$_{\textrm{1FA}}$) proceeded differently after the topic introduction. Prior studies have shown that a lack of clarity about functionality and security benefits of authentication methods leads to a lower security rating, lower acceptance, and reluctance to switch to a new authentication method. We decided for our study design to address this lack through an introduction of passwordless authentication and showing how to use the security key before letting our participants try out passwordless authentication themselves. For the hands-on task we used again our  mock fakebook and schmoogle websites, but this time supporting only single factor authentication with FIDO2. The reason we decided to use mock websites is simply that at the time in 2018 when we conducted this study no real service offered passwordless authentication with FIDO2. Let me give you some details about the videos for our passwordless authentication group.&lt;/p&gt;
+&lt;h4 id=&#34;introduction-video-of-1fa&#34;&gt;Introduction Video of 1FA&lt;/h4&gt;
+&lt;p&gt;For introducing passwordless authentication, we provide publicly available information from vendor sites like Yubico or from technology-related blogs and news about FIDO2. Such as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;No more passwords are needed and a security key can be reused instead for different accounts.&lt;/li&gt;
+&lt;li&gt;The key costs 40 Euros, which corresponds to around 40 Dollars, the median price between low- and high-end security keys on the market.&lt;/li&gt;
+&lt;li&gt;No secret data, like a password, needs to be stored on the web service.&lt;/li&gt;
+&lt;li&gt;Compromising the client does not leak any secrets either.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In the video below, the first 2:39 min provide the general introduction of text-based passwords, followed by the introduction of Passwordless authentication method (1FA).&lt;/p&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/EpxNA9Txq4Q&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&#34;setup-video-of-1fa&#34;&gt;Setup Video of 1FA&lt;/h4&gt;
+&lt;p&gt;The technical guide on how to use the security key showed in a screen recording how to register and login to our mock websites here examplified with our Schmoogle website. Here is the video:&lt;/p&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/_6DzQj1bOyU&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&#34;hands-on-task-for-group_textrm1fa&#34;&gt;Hands-on Task for Group$_{\textrm{1FA}}$&lt;/h4&gt;
+&lt;p&gt;Like our control group Group$_{\textrm{Pass}}$, Group$_{\textrm{1FA}}$ had to register a new account on our mock websites and login to those accounts. In contrast to the control group, they used a Yubico security key as 1FA instead of regular text-based password (i.e., passwordless).&lt;/p&gt;
+&lt;h4 id=&#34;survey&#34;&gt;Survey&lt;/h4&gt;
+&lt;p&gt;Lastly, like our control group, our passwordless authentication group also answered the survey in which we asked them  to reflect on their experience with passwordless authentication and tell us about the ideas, benefits or drawbacks they see, or concerns they have. As a result, our collected data allowed us to evaluate the usability and acceptance of FIDO2 passwordless authentication and to gather user concerns and feedback about the paradigm shift to passwordless authentication.&lt;/p&gt;
+&lt;h1 id=&#34;results&#34;&gt;Results&lt;/h1&gt;
+&lt;p&gt;Now, let me summarize the results of our study.&lt;/p&gt;
+&lt;h3 id=&#34;demographics-results&#34;&gt;Demographics Results&lt;/h3&gt;
+&lt;p&gt;First, the demographics of our study met the expectations for study conducted in a university setting:&lt;/p&gt;
+&lt;p style=&#34;margin-left: 40px; margin-right: auto;&#34;&gt;
+  &lt;i class=&#34;fas fa-venus-mars  pr-1 fa-fw&#34;&gt;&lt;/i&gt; 56.4% identified as female&lt;/p&gt;
+&lt;p style=&#34;margin-left: 40px; margin-right: auto;&#34;&gt;
+  &lt;i class=&#34;fas fa-graduation-cap  pr-1 fa-fw&#34;&gt;&lt;/i&gt; Most with university degree&lt;/p&gt;
+&lt;p style=&#34;margin-left: 40px; margin-right: auto;&#34;&gt;
+  &lt;i class=&#34;fas fa-cake-candles  pr-1 fa-fw&#34;&gt;&lt;/i&gt; On average 25 years old&lt;/p&gt;
+&lt;p&gt;We did not find any differences in the demographic composition between our control group and our study group (using two sample t-test and Fisher’s exact test depending on the variable, i.e., frequencies or the scale mean):&lt;/p&gt;
+&lt;p style=&#34;margin-left: 40px; margin-right: auto;&#34;&gt;
+  &lt;i class=&#34;fas fa-scale-balanced  pr-1 fa-fw&#34;&gt;&lt;/i&gt; No relevant differences between groups&lt;/p&gt;
+&lt;h3 id=&#34;quantitative-results&#34;&gt;Quantitative Results&lt;/h3&gt;
+&lt;p&gt;We quantitively measured the usability of the authentication methods with the SUS score and acceptance of the authentication methods with the scale from &lt;a href=&#34;https://doi.org/10.1016/S0968-090X%2896%2900025-3&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;van der Laan et al&lt;/a&gt;. Our results show that:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;span style=&#34;color:#5cb85c&#34;&gt;Passwordless authentication&lt;/span&gt; is perceived as &lt;span style=&#34;color:#5cb85c&#34;&gt;more usable&lt;/span&gt; and was &lt;span style=&#34;color:#5cb85c&#34;&gt;more accepted&lt;/span&gt; than traditional password-based authentication&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;qualitative-results&#34;&gt;Qualitative Results&lt;/h3&gt;
+&lt;p&gt;Let me go through the main points we identified in our qualitative data.&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /project/passwordless/Cognitive_hu299844425b90c78117ffeac130c2b517_95035_0f21927115925e66885bc6623c4d0123.webp 400w,
+               /project/passwordless/Cognitive_hu299844425b90c78117ffeac130c2b517_95035_c84b14d798ee9aa2911de08db455c4e8.webp 760w,
+               /project/passwordless/Cognitive_hu299844425b90c78117ffeac130c2b517_95035_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://sanamlyastani.github.io/project/passwordless/Cognitive_hu299844425b90c78117ffeac130c2b517_95035_0f21927115925e66885bc6623c4d0123.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;227&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;First, the vast majority, 79% of our participants, mentioned the effort associated with the usage of the authentication method that they used.&lt;/p&gt;
+&lt;p&gt;Participants in the control group Group$_{\textrm{Pass}}$ found the creation of secure and unique passwords but also the memorization of an ever-increasing number of passwords a difficult and demanding task.&lt;/p&gt;
+&lt;p&gt;For our participants in the passwordless authentication group Group$_{\textrm{1FA}}$ cognitive effort was not an issue. In fact, the reduction of cognitive effort compared to password-based authentication was a great if not the greatest advantage of passwordless technology.&lt;/p&gt;
+&lt;p style=&#34;text-align: center; font-size:1em; color: gray; font-family: serif;&#34;&gt;&lt;em&gt;&amp;ldquo;No recalling of the password. For [a] new account, one need not [to] worry to come up with a password and remember it for later use.&amp;rdquo;&lt;/em&gt; (P92, Group$_{\textrm{1FA}}$)&lt;/p&gt;
+&lt;p&gt;However, participants in this group criticized that passwordless authentication requires carrying a device to be able to authenticate. It was seen as problematic and annoying that it is not possible to use web services if the security key is not present, which restricts spontaneous and ad-hoc use. Comparing both authentication methods, the switch from password-based to passwordless authentication was associated with a clear shift in the participants’ perception from cognitive to physical effort, which reflects the paradigm shift underlying the switch to FIDO2 single factor authentication—away from &lt;em&gt;‘something I know’&lt;/em&gt;, over to &lt;em&gt;‘something I have.’&lt;/em&gt;&lt;/p&gt;
+&lt;p style=&#34;text-align: center; font-size:1em; color: gray; font-family: serif;&#34;&gt;&lt;em&gt;&amp;ldquo;I think the only problem with this kind of authentication system is that the user[s] have to carry their Yubikey [Yubico Security Key] everywhere with them [&amp;hellip;].&amp;rdquo;&lt;/em&gt; (P62, Group$_{\textrm{1FA}}$)&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /project/passwordless/ThreatModel_hu0de5c1c14df9275d5e7316c393e78494_109882_2a97aab0f6e91ece7d1e316d3ca1e202.webp 400w,
+               /project/passwordless/ThreatModel_hu0de5c1c14df9275d5e7316c393e78494_109882_234620bea591758a5185d861ab668bb1.webp 760w,
+               /project/passwordless/ThreatModel_hu0de5c1c14df9275d5e7316c393e78494_109882_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://sanamlyastani.github.io/project/passwordless/ThreatModel_hu0de5c1c14df9275d5e7316c393e78494_109882_2a97aab0f6e91ece7d1e316d3ca1e202.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;268&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Participants from both groups thought about factors and problems that could affect the security of their accounts, but the prevailing threat models differed greatly.&lt;/p&gt;
+&lt;p&gt;Participants in the control group Group$_{\textrm{Pass}}$ were primarily worried that weak passwords, password reuse, or phishing attacks could lead to an attacker gaining access to their accounts.&lt;/p&gt;
+&lt;p&gt;Participants of our study group Group$_{\textrm{1FA}}$ were mainly afraid that someone else could gain access to their accounts with a lost or stolen security key. Several participants raised the question how to &amp;ldquo;revoke&amp;rdquo; and &amp;ldquo;recover&amp;rdquo; account access in such a case and they wanted an additional layer of protection to protect the security key against unauthorized use, such as biometrics. The concerns about losing access to the accounts went so far that participants expressed a desire for a backup authentication method.&lt;/p&gt;
+&lt;p style=&#34;text-align: center; font-size:1em; color: gray; font-family: serif;&#34;&gt;&lt;em&gt;“I just have one concern: What if someone steal[s] my Yubikey [Yubico Security Key]? Does that mean he can access all my accounts just inserting it [to] his computer?”&lt;/em&gt; (P66, Group$_{\textrm{1FA}}$)&lt;/p&gt;
+&lt;p style=&#34;text-align: center; font-size:1em; color: gray; font-family: serif;&#34;&gt;&lt;em&gt;“There should be a way to use your accounts without the yubikey [Yubico Security Key]. Otherwise you would be very dependent on it.”&lt;/em&gt; (P50, Group$_{\textrm{1FA}}$)&lt;/p&gt;
+&lt;p&gt;One very interesting aspect, however, was pointed out by one of our participants: the biggest advantage of passwordless authentication is the implicit guarantee that no one else can access the account as long as one is in possession of the security key. In this way, the disappearance of the security key from one’s own possession immediately warns of a potential unauthorized access to an account— something that passwords simply cannot offer.&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /project/passwordless/Applicability_hu9dfd5e3a6f70fc79288aaf6f0ad0b1bd_101667_3e3fb65b0851c1dfe870dda9b5ea193d.webp 400w,
+               /project/passwordless/Applicability_hu9dfd5e3a6f70fc79288aaf6f0ad0b1bd_101667_118e0f2bac58c1412be379edf17830fb.webp 760w,
+               /project/passwordless/Applicability_hu9dfd5e3a6f70fc79288aaf6f0ad0b1bd_101667_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://sanamlyastani.github.io/project/passwordless/Applicability_hu9dfd5e3a6f70fc79288aaf6f0ad0b1bd_101667_3e3fb65b0851c1dfe870dda9b5ea193d.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;231&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Another major problem that has arisen in relation to passwordless authentication are situational barriers.&lt;/p&gt;
+&lt;p&gt;Participants in our study group Group$_{\textrm{1FA}}$ complained about technical incompatibilities of the USB-based security key with mobile devices, like smartphones or tablets, that do not provide fitting USB interfaces.&lt;/p&gt;
+&lt;p style=&#34;text-align: center; font-size:1em; color: gray; font-family: serif;&#34;&gt;&lt;em&gt;“Nowadays an USB dongle seem to be a bit old, new computer doesn’t have this port, also probably most of the authentication on these days are done in mobile devices&amp;hellip;”&lt;/em&gt; (P70, Group$_{\textrm{1FA}}$)&lt;/p&gt;
+&lt;p&gt;Participants from the control group Group$_{\textrm{Pass}}$ came up with cases of authentication in which passwords seem to be superior because of their flexibility. They mentioned the ability to spontaneously delegate accounts via telephone or the usage of specially protected computers that do not provide physical access to standard interfaces, such as a public computer in a library.&lt;/p&gt;
+&lt;p style=&#34;text-align: center; font-size:1em; color: gray; font-family: serif;&#34;&gt;&lt;em&gt;&amp;quot;&amp;hellip;If necessary, you can also help relatives via telephone or Internet by changing something in their account or doing something for them if they are prevented from doing so.&amp;quot;&lt;/em&gt; (P84, Group$_{\textrm{Pass}}$)&lt;/p&gt;
+&lt;p&gt;Lack of access to the necessary interfaces also prevents the usage of an authenticator device like a security key.&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /project/passwordless/Habits_hue8b824b92c86965b0bedacf43fc096c3_116368_fb74bd96459ad133d32f5734bb3ee4c4.webp 400w,
+               /project/passwordless/Habits_hue8b824b92c86965b0bedacf43fc096c3_116368_03651e9ddf3d9f9900e844e41fce520a.webp 760w,
+               /project/passwordless/Habits_hue8b824b92c86965b0bedacf43fc096c3_116368_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://sanamlyastani.github.io/project/passwordless/Habits_hue8b824b92c86965b0bedacf43fc096c3_116368_fb74bd96459ad133d32f5734bb3ee4c4.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;284&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Many statements of the participants also described aspects connected to the mental migration process from passwords to passwordless authentication. This shift means a break with the well-established habits and traditions of users.&lt;/p&gt;
+&lt;p&gt;Over the course of our study, it became very clear to us that our participants have a clear mental model of password-based authentication. They know the pros and cons and have a certain understanding of the factors responsible for the security of a passwords.&lt;/p&gt;
+&lt;p&gt;For passwordless authentication, on the other hand, such mental models must first be established in the users’ minds. Although our videos seem to be a helpful introduction to this new technology from the participants’ point of view, obvious misconceptions in the free-text responses show that their mental models are only rudimentary, which lead to a lack of trust.&lt;/p&gt;
+&lt;p style=&#34;text-align: center; font-size:1em; color: gray; font-family: serif;&#34;&gt;&lt;em&gt;&amp;ldquo;Is it possible to track my exact location once I insert the Yubikey [Yubico Security Key]?&amp;rdquo;&lt;/em&gt; (P52, Group$_{\textrm{1FA}}$)&lt;/p&gt;
+&lt;p&gt;On the other hand, the majority of participants in our study group Group$_{\textrm{1FA}}$ described the authentication with the security key as a fun, pleasant, and exciting new user experience, in contrast to traditional passwords that were described as monotonous, boring, and annoying.&lt;/p&gt;
+&lt;p style=&#34;text-align: center; font-size:1em; color: gray; font-family: serif;&#34;&gt;&lt;em&gt;&amp;ldquo;It was overall very nice and pleasant. I found it very intuitive to use.&amp;rdquo;&lt;/em&gt; (P52, Group$_{\textrm{1FA}}$)&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /project/passwordless/Key_hub1d88754e5f83c64fd7b7eb4cba7e8da_63551_de26c9d8190e36d5030412dd313751a5.webp 400w,
+               /project/passwordless/Key_hub1d88754e5f83c64fd7b7eb4cba7e8da_63551_7fa70762b9898c8f1e0347a03989b709.webp 760w,
+               /project/passwordless/Key_hub1d88754e5f83c64fd7b7eb4cba7e8da_63551_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://sanamlyastani.github.io/project/passwordless/Key_hub1d88754e5f83c64fd7b7eb4cba7e8da_63551_de26c9d8190e36d5030412dd313751a5.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;222&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Lastly, and specific to our study group Group$_{\textrm{1FA}}$, there were doubts about the robustness and maturity of the authenticator device as well as complaints about the price of the device.&lt;/p&gt;
+&lt;p style=&#34;text-align: center; font-size:1em; color: gray; font-family: serif;&#34;&gt;&lt;em&gt;&amp;ldquo;Once the Yubikey [Yubico Security Key] didn’t react and I didn’t know if I had to press it or it’s enough to just hold my finger on it.&amp;rdquo;&lt;/em&gt; (P52, Group$_{\textrm{1FA}}$)&lt;/p&gt;
+&lt;p style=&#34;text-align: center; font-size:1em; color: gray; font-family: serif;&#34;&gt;&lt;em&gt;&amp;quot;. . . I don’t want to spend money on the key [Yubico Security Key]&amp;hellip;&amp;quot;&lt;/em&gt; (P52, Group$_{\textrm{1FA}}$)&lt;/p&gt;
+&lt;p style=&#34;text-align: center&#34;&gt;&lt;strong&gt;Willingness to (not) use passwordless authentication in Group$_{\textrm{1FA}}$&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Willingness&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;Most Frequent Arguments&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Yes&lt;/td&gt;
+&lt;td&gt;(16 participants)&lt;/td&gt;
+&lt;td&gt;- Easy/Secure/Memorywise-effortless&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Yes, but&lt;/td&gt;
+&lt;td&gt;(13 participants)&lt;/td&gt;
+&lt;td&gt;- Fear of losing access to own account&lt;br&gt;- Fear of account access by others&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Rather not&lt;/td&gt;
+&lt;td&gt;(11 participants)&lt;/td&gt;
+&lt;td&gt;- Fear of losing access to own account&lt;br&gt;- Mistrust&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;No&lt;/td&gt;
+&lt;td&gt;(6 participants)&lt;/td&gt;
+&lt;td&gt;- Mistrust&lt;br&gt;- Annoying to carry extra devices&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;We also asked our participants in our study group Group$_{\textrm{1FA}}$ if they would be willing to use passwordless authentication in their private lives. 16 participants were unconditionally willing to use it and explicitly highlighted the ease and convenience of passwordless authentication over password. The remaining 30 participants had different kinds of concerns. Among those concerns the fear of losing access to the own account, the fear of illegal access by someone else, and mistrust were mentioned most frequently.&lt;/p&gt;
+&lt;h3 id=&#34;influence-of-introduction-video&#34;&gt;Influence of introduction video&lt;/h3&gt;
+&lt;p&gt;We were wondering if our introduction video influenced our participants. To evaluate the stability of our findings, we repeated our study with a third group of participants Group$_{\textrm{1FAControl}}$ (47 participants), which forms our control group for single factor authentication. In regards to the demographics, this group did not substantially differ from the other two groups.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Changes to methodology for Group$_{\textrm{1FAControl}}$&lt;/strong&gt;: Participants in our new, third group still performed the hands-on tasks to register and login to our mock websites with a security key as the single authentication factor. However, in contrast to the original passwordless authentication group, we did not show them any of the introduction or explainer videos. But, since users are very likely not familiar with using a security key, we added technical guidance to the mock websites, which mimics the guidance of the original facebook and google sites for setting up two-factor authentication with a security key.&lt;/p&gt;
+&lt;p&gt;Here is an example for the information we provided on Schmoogle.&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /project/passwordless/Guidance_hu50dcc6ca05c3b9bbc31f6ede02c405bc_436128_a9cfca58caa43696ee2d41ebd3a6dda5.webp 400w,
+               /project/passwordless/Guidance_hu50dcc6ca05c3b9bbc31f6ede02c405bc_436128_6d5d5ccffda740bc4a53b369277219a0.webp 760w,
+               /project/passwordless/Guidance_hu50dcc6ca05c3b9bbc31f6ede02c405bc_436128_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://sanamlyastani.github.io/project/passwordless/Guidance_hu50dcc6ca05c3b9bbc31f6ede02c405bc_436128_a9cfca58caa43696ee2d41ebd3a6dda5.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;369&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;There is merely a hint about the absence of the password field and an option to get more information. In case a participant clicked for more information, a modal dialog designed after the original Google instructions gave a three step guidance about how to handle the security key.&lt;/p&gt;
+&lt;h4 id=&#34;quantitative-results-1&#34;&gt;Quantitative results&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Even &lt;span style=&#34;color:#5cb85c&#34;&gt;without a detailed introduction&lt;/span&gt;, passwordless authentication was perceived as &lt;span style=&#34;color:#5cb85c&#34;&gt;more usable&lt;/span&gt; and was &lt;span style=&#34;color:#5cb85c&#34;&gt;more accepted&lt;/span&gt; than password-based authentication.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;qualitative-results-1&#34;&gt;Qualitative results&lt;/h4&gt;
+&lt;p&gt;In terms of qualitative data, our two single factor authentication groups were pretty much the same.&lt;/p&gt;
+&lt;p&gt;$$ \textrm{Group}_{\textrm{1FA}} \approx \textrm{Group}_{\textrm{1FAControl}} $$&lt;/p&gt;
+&lt;p&gt;There were only few differences:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Control group Group$_{\textrm{1FAControl}}$ was &lt;span style=&#34;color:#5cb85c&#34;&gt;more worried about account access&lt;/span&gt; by others in case the authenticator is stolen or lost and &lt;span style=&#34;color:#5cb85c&#34;&gt;mistrusted the security key&lt;/span&gt; more, stating more often that they needed more information.&lt;/li&gt;
+&lt;li&gt;Differences in the willingness to use passwordless authentication, where the participants in the control group Group$_{\textrm{1FAControl}}$ were mostly only under certain conditions willing to switch to passwordless authentication. &lt;span style=&#34;color:#5cb85c&#34;&gt;Mistrust&lt;/span&gt; was mentioned more frequently as a reason to abstain.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;takeaways&#34;&gt;Takeaways&lt;/h1&gt;
+&lt;p&gt;While FIDO2 passwordless authentication has great potential to replace text-based passwords, we identified some obstacles on the road to adoption, for which we also tried to point out potential future work or recommendations.&lt;/p&gt;
+&lt;p style=&#34;text-align: center; font-size:2em&#34;&gt;&lt;strong&gt;User support and guidance for &lt;span style=&#34;color:#5cb85c&#34;&gt;scalable recovery&lt;/span&gt; is needed&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;A predominant concern among the participants in our passwordless authentication group was the loss of the security key and hence access to their accounts. What is particular to the setting is that the reuse of a single authenticator across multiple websites, which is considered a strong point of FIDO2 authentication, amplifies the recovery problem. In case of device loss, all affected accounts must be recovered, and currently there is no proper support or guidance for users for a scalable recovery.&lt;/p&gt;
+&lt;p style=&#34;text-align: center; font-size:2em&#34;&gt;&lt;strong&gt;Support for &lt;span style=&#34;color:#5cb85c&#34;&gt;authenticator revocation&lt;/span&gt; without prior recovery is needed&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;A few participants raised concerns about device theft and account access by the thief. In comparison to large-scaling problems like phishing campaigns or server breaches, those concerns are small-scaling and targeted with need for physical access to the victim. However, at the end of the day, the subjective views of users will determine the adoption of passwordless authentication. Thus, we think it is worthwhile to investigate solutions how users can securely revoke access to their account without the need to first recover access.&lt;/p&gt;
+&lt;p style=&#34;text-align: center; font-size:2em&#34;&gt;&lt;strong&gt;Users need to be made aware of (individual) corner cases to &lt;span style=&#34;color:#5cb85c&#34;&gt;adapt their authentication strategies&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;In contrast to passwords, which can be entered anywhere, token-based authentication will currently always have corner cases in which it is not applicable. Users should be informed about corner cases in which they cannot make use of token-based authentication and allow them to adapt their authentication strategies. For instance, depending on the devices on which an account must be accessed, users choose a suitable authenticator device.&lt;/p&gt;
+&lt;p style=&#34;text-align: center; font-size:2em&#34;&gt;&lt;strong&gt;Great opportunity to &lt;span style=&#34;color:#5cb85c&#34;&gt;tailor authenticator form and features&lt;/span&gt; for a personalised authentication&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;A few participants pointed out problems with the authenticator we used in our study, a Yubico Security Key. Most of those concerns were about the limited connectivity and hence lack of support for other client devices, like mobile phones with NFC or Bluetooth. Other concerns were about the price of the device, its robustness and usability, or more generally about the need to carry an extra device. Since FIDO2 does not define the form of the authenticator, just its capabilities and protocols, we think this is a great opportunity to tailor authenticator form and features to user demands, maybe avoiding the need to buy and carry dedicated devices and to offer a form of personalized authentication.&lt;/p&gt;
+&lt;p style=&#34;text-align: center; font-size:2em&#34;&gt;&lt;strong&gt;Establish mental models by drawing from existing models about &lt;span style=&#34;color:#5cb85c&#34;&gt;physical keys&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Finally, during our study, we noticed that our participants identify &amp;ldquo;authentication&amp;rdquo; automatically with &amp;ldquo;passwords&amp;rdquo; and they naturally did not have a mental model of how passwordless authentication with a security key works. Some participants expressed mistrust into the hardware token, mostly due to a lack of transparency.&lt;/p&gt;
+&lt;p&gt;Thus, the transition to FIDO2 passwordless authentication requires establishing mental models that see authentication more systematically. One path forward in this direction would be to draw from existing models about physical keys. For instance, that possession of the key means no one else can access the account, that spare keys can &amp;amp; should be used, or to associate every account with the right physical key.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;scientific-publication&#34;&gt;Scientific publication&lt;/h1&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div class=&#34;card-simple view-card&#34;&gt;
+
+  
+    
+
+
+&lt;div class=&#34;article-metadata&#34;&gt;
+
+  
+  
+  
+  
+  &lt;div&gt;
+    
+
+  &lt;span &gt;
+      Sanam Ghorbani Lyastani&lt;/span&gt;, &lt;span &gt;
+      Michael Schilling&lt;/span&gt;, &lt;span &gt;
+      Michaela Neumayr&lt;/span&gt;, &lt;span &gt;
+      Michael Backes&lt;/span&gt;, &lt;span &gt;
+      Sven Bugiel&lt;/span&gt;
+  &lt;/div&gt;
+  
+  
+
+  
+  &lt;span class=&#34;article-date&#34;&gt;
+    
+    
+      
+    
+    January, 2020
+  &lt;/span&gt;
+  
+
+  
+  &lt;span class=&#34;middot-divider&#34;&gt;&lt;/span&gt;
+  &lt;span class=&#34;pub-publication&#34;&gt;
+    
+      &lt;em&gt;Proceedings of the 41st IEEE Symposium on Security and Privacy (Oakland&#39;20)&lt;/em&gt;
+    
+  &lt;/span&gt;
+  
+
+  
+
+  
+  
+  
+  
+
+  
+  
+
+&lt;/div&gt;
+
+  
+
+  
+  
+  
+
+  &lt;div class=&#34;section-subheading article-title mb-1 mt-3&#34;&gt;
+    &lt;a href=&#34;https://sanamlyastani.github.io/publication/oakland20/&#34; &gt;Is FIDO2 the Kingslayer of User Authentication? A Comparative Usability Study of FIDO2 Passwordless Authentication&lt;/a&gt;
+  &lt;/div&gt;
+
+  
+
+  
+  &lt;div class=&#34;btn-links&#34;&gt;
+    
+
+
+
+
+
+
+
+
+  
+
+
+
+&lt;a class=&#34;btn btn-outline-primary btn-page-header btn-sm&#34; href=&#34;https://sanamlyastani.github.io/publication/oakland20/oakland20.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
+  PDF
+&lt;/a&gt;
+
+
+
+&lt;a href=&#34;#&#34; class=&#34;btn btn-outline-primary btn-page-header btn-sm js-cite-modal&#34;
+        data-filename=&#34;/publication/oakland20/cite.bib&#34;&gt;
+  Cite
+&lt;/a&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  &lt;/div&gt;
+  
+
+&lt;/div&gt;
+
+
+
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;Party that uses WebAuthn to register and authenticate users.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
